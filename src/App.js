@@ -10,7 +10,7 @@ import {
 import { ThemeContext } from './contexts/ThemeContext'
 import BackToTop from './components/BackToTop'
 import ScrollToTop from './utils/ScrollToTop'
-import { Main, ProjectPage } from './pages'
+import { Main } from './pages'
 
 function App() {
 	const { theme } = useContext(ThemeContext)
@@ -26,8 +26,6 @@ function App() {
 				<ScrollToTop />
 				<Switch>
 					<Route path='/' exact component={Main} />
-					<Route path='/experience' exact component={ProjectPage} />
-
 					<Redirect to='/' />
 				</Switch>
 			</Router>
