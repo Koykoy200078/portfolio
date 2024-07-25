@@ -4,9 +4,16 @@ export const achievementData = {
 	achievements: [
 		{
 			id: 1,
+			title: 'DICT ICT Proficiency DIAGNOSTIC Examination',
+			details: 'The ICT Specialist Proficiency Examination is designed to evaluate the competence of an individual to perform programming or systems analysis and design functions.',
+			date: 'April 30, 2024',
+			field: 'Examination',
+			image: null,
+		},
+		{
+			id: 2,
 			title: 'Philippine Startup Challenge 7 (PSC7)',
-			details:
-				'The Philippine Startup Challenge 7 is an exciting annual competition that invites innovative entrepreneurs and aspiring startups in the Philippines to showcase their business ideas and technologies. ',
+			details: 'The Philippine Startup Challenge 7 is an exciting annual competition that invites innovative entrepreneurs and aspiring startups in the Philippines to showcase their business ideas and technologies.',
 			date: 'December 12, 2022',
 			field: 'Startup Challenge',
 			image: pcs7,
