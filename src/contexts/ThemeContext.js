@@ -5,7 +5,7 @@ import { themeData } from '../data/themeData'
 export const ThemeContext = createContext()
 
 function ThemeContextProvider(props) {
-	const [theme, setTheme] = useState(themeData.theme)
+	let theme = themeData.theme
 	const [drawerOpen, setDrawerOpen] = useState(false)
 
 	const setHandleDrawer = () => {
