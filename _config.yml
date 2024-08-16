@@ -1,7 +1,0 @@
-title: "My Awesome Site"
-description: "A description of your site"
-url: "https://koykoy200078.github.io"
-baseurl: "" # Leave this empty to serve from the root
-
-markdown: kramdown
-theme: minima
