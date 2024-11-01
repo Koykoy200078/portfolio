@@ -1,6 +1,6 @@
 import one from '../assets/svg/projects/one.svg'
 import two from '../assets/svg/projects/two.svg'
-import four from '../assets/svg/projects/four.svg'
+import six from '../assets/svg/projects/six.svg'
 import five from '../assets/svg/projects/five.svg'
 
 export const projectsData = [
@@ -42,7 +42,7 @@ export const projectsData = [
 		tags: ['Django', 'CSS', 'Material Ui'],
 		code: 'https://github.com/Koykoy200078/',
 		demo: 'https://github.com/Koykoy200078/',
-		image: four,
+		image: six,
 	},
 ]
 
