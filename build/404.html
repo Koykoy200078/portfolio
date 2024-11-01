@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Redirecting...</title>
+		<script>
+			// This script will redirect to the correct route
+			var pathname = window.location.pathname
+			var search = window.location.search
+			var hash = window.location.hash
+			window.location.replace('/portfolio' + pathname + search + hash)
+		</script>
+	</head>
+	<body>
+		<h1>Redirecting...</h1>
+	</body>
+</html>
