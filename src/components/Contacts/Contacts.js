@@ -1,133 +1,76 @@
-import React, { useContext, useState } from 'react'
-import axios from 'axios'
-import isEmail from 'validator/lib/isEmail'
-import { makeStyles } from '@material-ui/core/styles'
-import {
-	FaTwitter,
-	FaLinkedinIn,
-	FaGithub,
-	FaYoutube,
-	FaBloggerB,
-	FaRedditAlien,
-	FaStackOverflow,
-	FaCodepen,
-	FaInstagram,
-	FaGitlab,
-	FaMediumM,
-} from 'react-icons/fa'
-import { FiPhone, FiAtSign } from 'react-icons/fi'
-import { HiOutlineLocationMarker } from 'react-icons/hi'
+import React, { useContext, useState } from 'react';
+import axios from 'axios';
+import isEmail from 'validator/lib/isEmail';
+import { styled } from '@mui/material/styles';
+import { FaTwitter, FaLinkedinIn, FaGithub, FaYoutube, FaBloggerB, FaRedditAlien, FaStackOverflow, FaCodepen, FaInstagram, FaGitlab, FaMediumM } from 'react-icons/fa';
+import { FiPhone, FiAtSign } from 'react-icons/fi';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
 
-import { ThemeContext } from '../../contexts/ThemeContext'
+import { ThemeContext } from '../../contexts/ThemeContext';
 
-import { socialsData } from '../../data/socialsData'
-import { contactsData } from '../../data/contactsData'
-import './Contacts.css'
+import { socialsData } from '../../data/socialsData';
+import { contactsData } from '../../data/contactsData';
+import './Contacts.css';
+
+const SocialIcon = styled('a')(({ themeColors }) => ({
+	width: '45px',
+	height: '45px',
+	borderRadius: '50%',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	fontSize: '21px',
+	backgroundColor: themeColors.primary,
+	color: themeColors.secondary,
+	transition: '250ms ease-in-out',
+	'&:hover': {
+		transform: 'scale(1.1)',
+		color: themeColors.secondary,
+		backgroundColor: themeColors.tertiary,
+	},
+}));
+
+const DetailsIcon = styled('div')(({ themeColors }) => ({
+	backgroundColor: themeColors.primary,
+	color: themeColors.secondary,
+	borderRadius: '50%',
+	width: '45px',
+	height: '45px',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	fontSize: '23px',
+	transition: '250ms ease-in-out',
+	flexShrink: 0,
+	'&:hover': {
+		transform: 'scale(1.1)',
+		color: themeColors.secondary,
+		backgroundColor: themeColors.tertiary,
+	},
+}));
 
 function Contacts() {
-	const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false);
 
-	const [name, setName] = useState('')
-	const [email, setEmail] = useState('')
-	const [message, setMessage] = useState('')
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [message, setMessage] = useState('');
 
-	const [success, setSuccess] = useState(false)
-	const [errMsg, setErrMsg] = useState('')
+	const [success, setSuccess] = useState(false);
+	const [errMsg, setErrMsg] = useState('');
 
-	const { theme } = useContext(ThemeContext)
+	const { theme } = useContext(ThemeContext);
 
 	const handleClose = (event, reason) => {
 		if (reason === 'clickaway') {
-			return
+			return;
 		}
 
-		setOpen(false)
-	}
-
-	const useStyles = makeStyles((t) => ({
-		input: {
-			border: `4px solid ${theme.primary80}`,
-			backgroundColor: `${theme.secondary}`,
-			color: `${theme.tertiary}`,
-			fontFamily: 'var(--primaryFont)',
-			fontWeight: 500,
-			transition: 'border 0.2s ease-in-out',
-			'&:focus': {
-				border: `4px solid ${theme.primary600}`,
-			},
-		},
-		message: {
-			border: `4px solid ${theme.primary80}`,
-			backgroundColor: `${theme.secondary}`,
-			color: `${theme.tertiary}`,
-			fontFamily: 'var(--primaryFont)',
-			fontWeight: 500,
-			transition: 'border 0.2s ease-in-out',
-			'&:focus': {
-				border: `4px solid ${theme.primary600}`,
-			},
-		},
-		label: {
-			backgroundColor: `${theme.secondary}`,
-			color: `${theme.primary}`,
-			fontFamily: 'var(--primaryFont)',
-			fontWeight: 600,
-			fontSize: '0.9rem',
-			padding: '0 5px',
-			transform: 'translate(25px,50%)',
-			display: 'inline-flex',
-		},
-		socialIcon: {
-			width: '45px',
-			height: '45px',
-			borderRadius: '50%',
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-			fontSize: '21px',
-			backgroundColor: theme.primary,
-			color: theme.secondary,
-			transition: '250ms ease-in-out',
-			'&:hover': {
-				transform: 'scale(1.1)',
-				color: theme.secondary,
-				backgroundColor: theme.tertiary,
-			},
-		},
-		detailsIcon: {
-			backgroundColor: theme.primary,
-			color: theme.secondary,
-			borderRadius: '50%',
-			width: '45px',
-			height: '45px',
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-			fontSize: '23px',
-			transition: '250ms ease-in-out',
-			flexShrink: 0,
-			'&:hover': {
-				transform: 'scale(1.1)',
-				color: theme.secondary,
-				backgroundColor: theme.tertiary,
-			},
-		},
-		submitBtn: {
-			backgroundColor: theme.primary,
-			color: theme.secondary,
-			transition: '250ms ease-in-out',
-			'&:hover': {
-				transform: 'scale(1.08)',
-				color: theme.secondary,
-				backgroundColor: theme.tertiary,
-			},
-		},
-	}))
-
-	const classes = useStyles()
+		setOpen(false);
+	};
 
 	const handleContactForm = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 
 		if (name && email && message) {
 			if (isEmail(email)) {
@@ -135,161 +78,114 @@ function Contacts() {
 					name: name,
 					email: email,
 					message: message,
-				}
+				};
 
 				axios.post(contactsData.sheetAPI, responseData).then((res) => {
-					console.log('success')
-					setSuccess(true)
-					setErrMsg('')
+					console.log('success');
+					setSuccess(true);
+					setErrMsg('');
 
-					setName('')
-					setEmail('')
-					setMessage('')
-					setOpen(false)
-				})
+					setName('');
+					setEmail('');
+					setMessage('');
+					setOpen(false);
+				});
 			} else {
-				setErrMsg('Invalid email')
-				setOpen(true)
+				setErrMsg('Invalid email');
+				setOpen(true);
 			}
 		} else {
-			setErrMsg('Enter all the fields')
-			setOpen(true)
+			setErrMsg('Enter all the fields');
+			setOpen(true);
 		}
-	}
+	};
 
 	return (
-		<div
-			className='contacts'
-			id='contacts'
-			style={{ backgroundColor: theme.secondary }}>
+		<div className='contacts' id='contacts' style={{ backgroundColor: theme.secondary }}>
 			<div className='contacts--container'>
 				<h1 style={{ color: theme.primary }}>Contacts</h1>
 				<div className='contacts-details'>
 					<a href={`mailto:${contactsData.email}`} className='personal-details'>
-						<div className={classes.detailsIcon}>
+						<DetailsIcon themeColors={theme}>
 							<FiAtSign />
-						</div>
+						</DetailsIcon>
 						<p style={{ color: theme.tertiary }}>{contactsData.email}</p>
 					</a>
 					<a href={`tel:${contactsData.phone}`} className='personal-details'>
-						<div className={classes.detailsIcon}>
+						<DetailsIcon themeColors={theme}>
 							<FiPhone />
-						</div>
+						</DetailsIcon>
 						<p style={{ color: theme.tertiary }}>{contactsData.phone}</p>
 					</a>
 					<div className='personal-details'>
-						<div className={classes.detailsIcon}>
+						<DetailsIcon themeColors={theme}>
 							<HiOutlineLocationMarker />
-						</div>
+						</DetailsIcon>
 						<p style={{ color: theme.tertiary }}>{contactsData.address}</p>
 					</div>
 
 					<div className='socialmedia-icons'>
 						{socialsData.twitter && (
-							<a
-								href={socialsData.twitter}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.twitter} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaTwitter aria-label='Twitter' />
-							</a>
+							</SocialIcon>
 						)}
 						{socialsData.github && (
-							<a
-								href={socialsData.github}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.github} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaGithub aria-label='GitHub' />
-							</a>
+							</SocialIcon>
 						)}
 						{socialsData.linkedIn && (
-							<a
-								href={socialsData.linkedIn}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.linkedIn} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaLinkedinIn aria-label='LinkedIn' />
-							</a>
+							</SocialIcon>
 						)}
 						{socialsData.instagram && (
-							<a
-								href={socialsData.instagram}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.instagram} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaInstagram aria-label='Instagram' />
-							</a>
+							</SocialIcon>
 						)}
 						{socialsData.medium && (
-							<a
-								href={socialsData.medium}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.medium} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaMediumM aria-label='Medium' />
-							</a>
+							</SocialIcon>
 						)}
 						{socialsData.blogger && (
-							<a
-								href={socialsData.blogger}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.blogger} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaBloggerB aria-label='Blogger' />
-							</a>
+							</SocialIcon>
 						)}
 						{socialsData.youtube && (
-							<a
-								href={socialsData.youtube}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.youtube} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaYoutube aria-label='YouTube' />
-							</a>
+							</SocialIcon>
 						)}
 						{socialsData.reddit && (
-							<a
-								href={socialsData.reddit}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.reddit} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaRedditAlien aria-label='Reddit' />
-							</a>
+							</SocialIcon>
 						)}
 						{socialsData.stackOverflow && (
-							<a
-								href={socialsData.stackOverflow}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.stackOverflow} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaStackOverflow aria-label='Stack Overflow' />
-							</a>
+							</SocialIcon>
 						)}
 						{socialsData.codepen && (
-							<a
-								href={socialsData.codepen}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.codepen} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaCodepen aria-label='CodePen' />
-							</a>
+							</SocialIcon>
 						)}
 						{socialsData.gitlab && (
-							<a
-								href={socialsData.gitlab}
-								target='_blank'
-								rel='noreferrer'
-								className={classes.socialIcon}>
+							<SocialIcon href={socialsData.gitlab} target='_blank' rel='noreferrer' themeColors={theme}>
 								<FaGitlab aria-label='GitLab' />
-							</a>
+							</SocialIcon>
 						)}
 					</div>
 				</div>
 			</div>
 			<img src={theme.contactsimg} alt='contacts' className='contacts--img' />
 		</div>
-	)
+	);
 }
 
-export default Contacts
+export default Contacts;

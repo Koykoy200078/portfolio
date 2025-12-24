@@ -1,183 +1,171 @@
-.experience{
-    min-height: 100vh;
+.experience {
+	min-height: 100vh;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.experience-body {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+.experience-container {
+	max-width: 1400px;
+	width: 100%;
+	padding: 0 3rem;
+	margin: 0 auto;
 }
 
-.experience-description {
-    width: 100%;
-    flex: 0.65;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    margin-right: 2rem;
+.experience-title {
+	text-align: center;
+	margin-bottom: 3rem;
 }
 
-.experience-description > h1 {
-    font-size: 3.5rem;
-    font-family: var(--primaryFont);
-    margin-bottom: 2rem;
+.experience-image-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 4rem;
+	padding: 2rem;
 }
 
-.experience-card {
-    display: flex;
-    flex-direction: row;
-    align-items:flex-start;
-    justify-content: flex-start;
-    width: 90%;
-    height: 140px;
-    padding: 1.5rem;
-    border-radius: 20px;
-    margin-bottom: 1.5rem;
-    transition: background-color 200ms ease-in-out;
+.experience-illustration {
+	max-width: 500px;
+	width: 100%;
+	height: auto;
+	opacity: 0.9;
+	pointer-events: none;
 }
-
-.expcard-img {
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.expcard-img > img {
-    width: 36px;
-    pointer-events: none;
-}
-
-.experience-details {
-    margin-left: 0.6rem;
-}
-
-.experience-details > h6 {
-    font-family: var(--primaryFont);
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.experience-details > h4 {
-    font-family: var(--primaryFont);
-    font-size: 1.225rem;
-    font-weight: 600;
-}
-
-.experience-details > h5 {
-    font-family: var(--primaryFont);
-    font-size: 1.15rem;
-    font-weight: 600;
-}
-
-.experience-image {
-    box-sizing: border-box;
-    padding: 1rem;
-    flex: 0.35;
-    margin-left: 7%;
-    margin-top: 1rem;
-    pointer-events: none;
-}
-
-.experience-image > img {
-    width: 100%;
-    pointer-events: none;
-}
-
-
-
-
-
 
 @media (min-width: 992px) and (max-width: 1380px) {
-
+	.experience-container {
+		padding: 0 2rem;
+	}
+	.experience-title {
+		font-size: 3rem !important;
+	}
 }
 
-
 @media screen and (max-width: 992px) {
-    .experience {
-        min-height: 100%;
-    }
-    .experience-image {
-        display: none;
-    }
-    .experience-description {
-        flex: 1;
-        margin: auto;
-    }    
-    .experience-description > h1{
-        font-size: 3.2rem;
-    }
-    .experience-card {
-        width: 100%;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
+	.experience {
+		min-height: 100%;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+	.experience-container {
+		padding: 0 1.5rem;
+	}
+	.experience-title {
+		font-size: 3.2rem !important;
+		margin-bottom: 2rem !important;
+	}
+	.experience-image-wrapper {
+		margin-top: 3rem;
+	}
+	.experience-illustration {
+		max-width: 350px;
+	}
 }
 
 @media screen and (max-width: 800px) {
-    .experience-description > h1{
-        font-size: 3rem;
-        margin-bottom: 2rem;
-        align-self: center;
-    }
-    .experience-description {
-        padding: 1rem;
-    }
-    .experience-card {
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-        height: 130px;
-    }
-    .expcard-img {
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-    }
-    
-    .expcard-img > img {
-        width: 30px;
-    }
-    .experience-details > h6 {
-        font-size: 0.85rem;
-        margin-bottom: 0.45rem;
-    }
-    
-    .experience-details > h4 {
-        font-size: 1.125rem;
-        line-height: 126%;
-    }
-    
-    .experience-details > h5 {
-        font-size: 1.05rem;
-        line-height: 126%;
-    }
+	.experience {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+	.experience-container {
+		padding: 0 1rem;
+	}
+	.experience-title {
+		font-size: 3rem !important;
+		margin-bottom: 1.5rem !important;
+	}
+	.experience-image-wrapper {
+		margin-top: 2rem;
+		padding: 1rem;
+	}
 }
 
 @media screen and (max-width: 600px) {
-    .experience-description > h1{
-        font-size: 2.5rem;
-    }
+	.experience-title {
+		font-size: 2.5rem !important;
+	}
+	.experience-image-wrapper {
+		display: none;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1380px) {
+}
+
+@media screen and (max-width: 992px) {
+	.experience {
+		min-height: 100%;
+	}
+	.experience-image {
+		display: none;
+	}
+	.experience-description {
+		flex: 1;
+		margin: auto;
+	}
+	.experience-description > h1 {
+		font-size: 3.2rem;
+	}
+	.experience-card {
+		width: 100%;
+		padding: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.experience-description > h1 {
+		font-size: 3rem;
+		margin-bottom: 2rem;
+		align-self: center;
+	}
+	.experience-description {
+		padding: 1rem;
+	}
+	.experience-card {
+		padding: 1rem;
+		margin-bottom: 1.5rem;
+		height: 130px;
+	}
+	.expcard-img {
+		border-radius: 50%;
+		width: 45px;
+		height: 45px;
+	}
+
+	.expcard-img > img {
+		width: 30px;
+	}
+	.experience-details > h6 {
+		font-size: 0.85rem;
+		margin-bottom: 0.45rem;
+	}
+
+	.experience-details > h4 {
+		font-size: 1.125rem;
+		line-height: 126%;
+	}
+
+	.experience-details > h5 {
+		font-size: 1.05rem;
+		line-height: 126%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.experience-description > h1 {
+		font-size: 2.5rem;
+	}
 }
 
 @media screen and (max-width: 400px) {
-
-}
-  
-@media only screen and (min-device-width: 320px) and (max-device-width: 
-  480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {
-
 }
 
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {
+}
 
 @media only screen and (device-width: 768px) {
-
 }
